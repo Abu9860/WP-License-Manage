@@ -32,11 +32,24 @@ class WP_License_Manager {
         require_once $this->plugin_path . 'includes/api.php';
         require_once $this->plugin_path . 'includes/envato_validate.php';
         require_once $this->plugin_path . 'includes/woo_integration.php';
+        require_once $this->plugin_path . 'includes/edd_integration.php';
+        
+        // Initialize integrations based on settings
+        $settings = get_option('wp_license_manager_settings', array());
+        
+        if (!empty($settings['enable_woocommerce']) && class_exists('WooCommerce')) {
+            new WP_License_WooCommerce();
+        }
+        
+        if (!empty($settings['enable_edd']) && class_exists('Easy_Digital_Downloads')) {
+            new WP_License_EDD();
+        }
     }
 
     private function init_admin() {
         require_once $this->plugin_path . 'admin/dashboard.php';
         require_once $this->plugin_path . 'admin/settings.php';
+        require_once $this->plugin_path . 'admin/documentation.php';  // Add this line
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
     }
@@ -76,17 +89,33 @@ class WP_License_Manager {
         );
     }
 
-    public function enqueue_admin_assets() {
+    public function enqueue_admin_assets($hook) {
         wp_enqueue_style(
             'wp-license-manager-admin',
             $this->plugin_url . 'assets/style.css',
             array(),
             $this->version
         );
+
+        // Only load docs script on documentation page
+        if ('license-manager_page_wp-license-manager-docs' === $hook) {
+            wp_enqueue_script(
+                'wp-license-manager-docs',
+                $this->plugin_url . 'assets/docs.js',
+                array('jquery'),
+                $this->version,
+                true
+            );
+        }
     }
 
     public function display_documentation() {
         require_once $this->plugin_path . 'admin/documentation.php';
+        if (function_exists('wp_license_manager_documentation')) {
+            wp_license_manager_documentation();
+        } else {
+            wp_die(__('Documentation file not found. Path: ' . $this->plugin_path . 'admin/documentation.php', 'wp-license-manager'));
+        }
     }
 
     public function handle_export() {
@@ -151,5 +180,15 @@ class WP_License_Manager {
             admin_url('admin.php?page=wp-license-manager')
         ));
         exit;
+    }
+
+    public function test_mode() {
+        if (WP_LICENSE_MANAGER_DEBUG) {
+            add_action('admin_notices', function() {
+                echo '<div class="notice notice-warning">';
+                echo '<p>WP License Manager is running in test mode. For testing purposes only.</p>';
+                echo '</div>';
+            });
+        }
     }
 }

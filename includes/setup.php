@@ -36,6 +36,9 @@ function wp_license_manager_activate() {
     if (get_option('wp_license_manager_version') === false) {
         wp_license_manager_install_demo_data();
     }
+
+    // Set flag to flush rewrite rules
+    update_option('wp_license_manager_flush_needed', 'yes');
 }
 
 function wp_license_manager_deactivate() {

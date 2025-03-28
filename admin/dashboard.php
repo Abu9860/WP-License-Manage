@@ -57,6 +57,15 @@ function wp_license_manager_dashboard() {
 
     ?>
     <div class="wrap wp-license-manager-wrap">
+        <?php if (WP_LICENSE_MANAGER_DEBUG): ?>
+            <div class="test-panel">
+                <h3><?php _e('Quick Test Panel', 'wp-license-manager'); ?></h3>
+                <button class="button" onclick="testLicenseGeneration()">Test License Generation</button>
+                <button class="button" onclick="testAPIEndpoints()">Test API Endpoints</button>
+                <button class="button" onclick="testIntegrations()">Test Integrations</button>
+            </div>
+        <?php endif; ?>
+
         <h1 class="wp-heading-inline"><?php _e('License Manager Dashboard', 'wp-license-manager'); ?></h1>
         <a href="<?php echo admin_url('admin.php?page=wp-license-manager-settings'); ?>" class="page-title-action"><?php _e('Settings', 'wp-license-manager'); ?></a>
 

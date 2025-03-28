@@ -35,6 +35,125 @@
     margin: 15px 0;
 }
 
+/* Documentation Tabs */
+.wp-license-manager-docs .nav-tab-wrapper {
+    margin-bottom: 20px;
+}
+
+.wp-license-manager-docs .tab-content {
+    display: none;
+}
+
+.wp-license-manager-docs .tab-content.active {
+    display: block;
+}
+
+.wp-license-manager-docs .card {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.wp-license-manager-docs h2 {
+    margin-top: 0;
+}
+
+.wp-license-manager-docs ul,
+.wp-license-manager-docs ol {
+    margin-left: 20px;
+}
+
+.wp-license-manager-docs pre {
+    background: #f5f5f5;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 15px 0;
+}
+
+/* Documentation Enhancement Styles */
+.feature-section {
+    margin: 20px 0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-item {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.feature-item .dashicons {
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    color: #0073aa;
+}
+
+.setup-steps .step {
+    margin-bottom: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-left: 4px solid #0073aa;
+}
+
+.step-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #0073aa;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    margin-right: 10px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h4 {
+    background: #f8f9fa;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.solution {
+    padding: 15px;
+    border: 1px solid #eee;
+}
+
+.support-section {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.wp-license-manager-docs h2 .dashicons {
+    margin-right: 10px;
+    color: #0073aa;
+}
+
+.integration-steps img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 /* License Table Styles */
 .wp-list-table .column-status {
     width: 10%;
@@ -174,4 +293,126 @@
 
 .wp-license-modal .close:hover {
     color: #666;
+}
+
+/* My Account Licenses Page */
+.wc-licenses .license-status {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.wc-licenses .status-active {
+    background: #dff0d8;
+    color: #3c763d;
+}
+
+.wc-licenses .status-expired {
+    background: #f2dede;
+    color: #a94442;
+}
+
+.wc-licenses .status-revoked {
+    background: #fcf8e3;
+    color: #8a6d3b;
+}
+
+/* Variable Product License Options */
+.woocommerce_variable_attributes .variable-license-options {
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+
+/* Product Page License Info Styles */
+.product-license-info {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.product-license-info h4 {
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    color: #23282d;
+}
+
+.license-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.license-details li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.license-details .dashicons {
+    margin-right: 8px;
+    color: #0073aa;
+}
+
+.license-type {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #0073aa;
+    color: #fff;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.variation-license-info {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.variation-license-info .license-type {
+    font-size: 0.9em;
+    padding: 2px 6px;
+    margin-right: 8px;
+}
+
+.variation-license-info .license-duration {
+    color: #0073aa;
+}
+
+/* License Key Display */
+.license-key-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.license-key-wrapper .button {
+    padding: 2px 8px;
+    height: auto;
+    min-height: 24px;
+    line-height: 20px;
+}
+
+.license-key-wrapper .copy-license-key {
+    padding: 2px 4px;
+}
+
+.license-key-wrapper .dashicons {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    margin: 2px 0;
+}
+
+.license-key-hidden, 
+.license-key-full {
+    font-family: monospace;
+    padding: 2px 4px;
+    background: #f0f0f1;
+    border-radius: 3px;
 }
